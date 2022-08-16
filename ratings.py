@@ -11,6 +11,13 @@
 # Step 6 - Repeat Step 4
 # put your code here
 
+def print_sorted_restaurant_ratings(restaurant_ratings):
+    """Prints alphabetized list of restaurant ratings"""
+    restaurant_ratings_items = restaurant_ratings.items()
+    restaurant_ratings_items = sorted(restaurant_ratings_items)
+    for restaurant_ratings_item in restaurant_ratings_items:
+        print(f"{restaurant_ratings_item[0]} is rated at {restaurant_ratings_item[1]}")
+
 scores_file = open("scores.txt")
 restaurant_ratings = {}
 for line in scores_file:
@@ -23,9 +30,10 @@ for line in scores_file:
 # this key doesn't exist in the dict, so make it for us
     restaurant_ratings[restaurant_name] = restaurant_rating
 
-restaurant_ratings_items = restaurant_ratings.items()
-restaurant_ratings_items = sorted(restaurant_ratings_items)
-for restaurant_ratings_item in restaurant_ratings_items:
-    print(f"{restaurant_ratings_item[0]} is rated at {restaurant_ratings_item[1]}")
-    # print(f"{restaurant_ratings_items[0][0]} is rated at {restaurant_ratings_items[0][1]}")
+print_sorted_restaurant_ratings(restaurant_ratings)
 
+user_restaurant_name = input("Input restaurant name: ")
+user_restaurant_rating = input("Input restaurant rating: ")
+restaurant_ratings[user_restaurant_name] = user_restaurant_rating
+
+print_sorted_restaurant_ratings(restaurant_ratings)
